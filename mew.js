@@ -63,6 +63,7 @@ $(document).on("keydown", function (event) {
 });
 
 function Input(letter) {
+  // start: move into separate function - handleLetterDeletion
   if ((letter == "Delete" || letter == "Backspace") && rowUser.length > 0) {
     if (currentLetter > 0) {
       currentLetter--;
@@ -70,44 +71,39 @@ function Input(letter) {
         .eq(currentRow * 5 + currentLetter)
         .text("");
       rowUser.pop();
-      
-    }return;
+
+    } return;
   }
+  // end: move into separate function - handleLetterDeletion
+  // start: move into separate function - handleWordSubmission
   if (letter === "Enter") {
     if (rowUser.length !== 5) {
       alert("input 5 letters");
       return;
     }
-   
+
 
     if (rowUser.length === 5) {
       for (let i = 0; i < 5; i++) {
         let color = "";
+        let animationTime = null
         if (rowUser[i].toLowerCase() === randomWord[i]) {
-          $(".item")
-            .eq(currentRow * 5 + i)
-            .css("backgroundColor", " #66ff94")
-            .fadeOut(150)
-            .fadeIn(150);
+          animationTime = 150
           color = "#66ff94";
-          ColorForKey(rowUser[i].toLowerCase(), color);
         } else if (randomWord.includes(rowUser[i].toLowerCase())) {
-          $(".item")
-            .eq(currentRow * 5 + i)
-            .css("backgroundColor", "#ff8533")
-            .fadeOut(200)
-            .fadeIn(200);
+          animationTime = 200
           color = "#ff8533";
-          ColorForKey(rowUser[i].toLowerCase(), color);
         } else {
-          $(".item")
-            .eq(currentRow * 5 + i)
-            .css("backgroundColor", "#8c8c8c")
-            .fadeOut(250)
-            .fadeIn(250);
+          animationTime = 250
           color = "#8c8c8c";
-          ColorForKey(rowUser[i].toLowerCase(), color);
         }
+
+        $(".item")
+          .eq(currentRow * 5 + i)
+          .css("backgroundColor", "#8c8c8c")
+          .fadeOut(animationTime)
+          .fadeIn(animationTime);
+        ColorForKey(rowUser[i].toLowerCase(), color);
       }
       if (rowUser.join("").toLowerCase() === randomWord) {
         setTimeout(function () {
@@ -119,7 +115,7 @@ function Input(letter) {
       currentRow++;
       if (currentRow == 5 && rowUser.join("").toLowerCase() !== randomWord) {
         setTimeout(function () {
-          alert("You lose! word is "+ randomWord);
+          alert("You lose! word is " + randomWord);
         }, 200);
         let lose = new Audio("sounds/wrong.mp3");
         lose.play();
@@ -127,14 +123,17 @@ function Input(letter) {
 
       rowUser = [];
       currentLetter = 0;
-       return;}
+      return;
     }
-   
-  
-  
-let ukrainianAlphabet = "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя";
-if (rowUser.length < 5 && currentLetter < 25 && letter.length === 1) {
-  if (ukrainianAlphabet.includes(letter.toLowerCase())) {
+  }
+  // end: move into separate function - handleWordSubmission
+
+  // start: move into separate function - ?handleWordEntry? - think about more proper name
+  // 'а'.charCodeAt(0) - 1072
+  // 'я'.charCodeAt(0) - 1103
+  letter = letter.toLowerCase()
+  const isUkrLetter = letter.charCodeAt(0) >= 1072 && letter.charCodeAt(0) <= 1103
+  if (isUkrLetter && rowUser.length < 5 && currentLetter < 25 && letter.length === 1) {
     let upperLetter = letter.toUpperCase();
     rowUser.push(upperLetter);
     $(".item")
@@ -144,7 +143,7 @@ if (rowUser.length < 5 && currentLetter < 25 && letter.length === 1) {
     kick.play();
     currentLetter++;
   }
-}
+  // end: move into separate function - ?handleWordEntry? - think about more proper name
 }
 function ColorForKey(letter, color) {
   $(".btn").each(function () {
@@ -172,7 +171,7 @@ $(".reset").on("click", function () {
     $(".reset").removeClass("resetClick");
   }, 100);
   let kick = new Audio("sounds/kick-bass.mp3");
-    kick.play();
+  kick.play();
 });
 function Reset(words) {
   randomWord = CreateRandomWord(words);
