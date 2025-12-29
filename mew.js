@@ -48,7 +48,7 @@ function CreateRandomWord(words) {
 let randomWord = CreateRandomWord(words);
 let rowUser = [];
 
-currentRow = 0;
+let currentRow = 0;
 
 let currentLetter = 0;
 $(".btn").on("click", function () {
@@ -70,11 +70,11 @@ function Input(letter) {
         .eq(currentRow * 5 + currentLetter)
         .text("");
       rowUser.pop();
-      return;
-    }
+      
+    }return;
   }
   if (letter === "Enter") {
-    if (letter == "Enter" && rowUser.length !== 5) {
+    if (rowUser.length !== 5) {
       alert("input 5 letters");
       return;
     }
