@@ -1,0 +1,55 @@
+.row  {
+ 
+  display: grid;
+  grid-template-columns: repeat(5, 80px);
+ grid-template-rows: 80px;
+  gap: 5px;
+  justify-content: center;
+ margin-bottom: 5px;
+
+}
+
+.item {
+  background-color: rgb(200, 229, 255);
+  border-radius: 12px;
+  border: 2px solid rgb(88, 181, 198);
+
+}
+
+.clava{
+  display: flex;     
+  flex-wrap: wrap;    
+  gap: 8px;
+  justify-content: center;
+  max-width: 600px;   
+  margin: 50px auto 0;
+}
+.clava button{
+   background-color: rgba(225, 229, 255, 0.822);
+   border: 1px solid rgb(96, 155, 203);
+   border-radius: 5px;
+
+  min-width: 45px;     
+  height: 50px;
+  padding: 5px 10px;   
+
+}
+.clava button.delete{
+    background-color: rgb(255, 206, 206);
+       border: 1px solid rgb(255, 117, 117);
+}
+.clava button.enter{
+    background-color: rgb(215, 255, 214);
+       border: 1px solid rgb(7, 255, 77);
+}
+
+.item{
+ font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 45px;
+  display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
