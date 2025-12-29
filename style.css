@@ -1,123 +1,123 @@
-
-.row  {
- 
+.row {
   display: grid;
   grid-template-columns: repeat(5, 80px);
- grid-template-rows: 80px;
+  grid-template-rows: 80px;
   gap: 5px;
   justify-content: center;
- margin-bottom: 5px;
-
+  margin-bottom: 5px;
 }
-body{
+body {
   background-color: rgb(229, 252, 255);
 }
 .item {
   background-color: rgb(200, 229, 255);
   border-radius: 12px;
   border: 2px solid rgb(88, 181, 198);
-
 }
 
-.clava{
-  display: flex;     
-  flex-wrap: wrap;    
+.clava {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  max-width: 600px;   
+  max-width: 600px;
   margin: 20px auto 0;
 }
-.clava button{
-   background-color: rgba(225, 229, 255, 0.822);
-   border: 1px solid rgb(96, 155, 203);
-   border-radius: 5px;
+.clava button {
+  background-color: rgba(225, 229, 255, 0.822);
+  border: 1px solid rgb(96, 155, 203);
+  border-radius: 5px;
 
-  min-width: 45px;     
+  min-width: 45px;
   height: 50px;
-  padding: 5px 10px;   
+  padding: 5px 10px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 450;
   font-size: 15px;
+}
+.clava button.delete {
+  background-color: rgb(255, 206, 206);
+  border: 1px solid rgb(255, 117, 117);
+}
+.clava button.enter {
+  background-color: rgb(215, 255, 214);
+  border: 1px solid rgb(7, 255, 77);
+}
 
-}
-.clava button.delete{
-    background-color: rgb(255, 206, 206);
-       border: 1px solid rgb(255, 117, 117);
-}
-.clava button.enter{
-    background-color: rgb(215, 255, 214);
-       border: 1px solid rgb(7, 255, 77);
-}
-
-.item{
- font-family: "Ubuntu", sans-serif;
+.item {
+  font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 45px;
   display: flex;
- align-items: center;
- justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.virtCl{
-  background-color: rgb(157, 193, 203)  !important;
+.virtCl {
+  background-color: rgb(157, 193, 203) !important;
 }
 
-.reset{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: rgb(155, 255, 183);
-   height: 40px;
-   width: 90px;
-   border-radius: 10px;
-   border: 2px solid rgb(118, 202, 146);
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(155, 255, 183);
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  border: 2px solid rgb(118, 202, 146);
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
-font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 450;
   font-size: 20px;
-
 }
-.resetClick{
+.resetClick {
   background-color: rgb(102, 154, 117);
 }
 
 @media (max-width: 600px) {
-  .row { 
+  .row {
     display: flex;
+    grid-template-columns: none;
+    width: 100%;
     justify-content: center;
-    width: 100%; 
-    margin: 5px 0;
-  } 
+    gap: 4px;
+    margin-bottom: 4px;
+  }
 
   .item {
-    width: 16vw;      
-    height: 16vw;
-    font-size: 25px; 
-    margin: 2px;
+    width: 17vw;
+    height: 17vw;
+
+    max-width: 60px;
+    max-height: 60px;
+
+    font-size: 28px !important;
+    border-radius: 8px;
   }
 
   .clava {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
     width: 100%;
-    padding: 10px 0;
-  }
-
-  .btn {
-    flex: 1 0 8vw; 
-    height: 45px;
-    font-size: 14px;
-    margin: 2px;
     padding: 5px;
-    border-radius: 4px;
+    gap: 4px;
   }
 
-  .enter, .delete {
-    flex: 2 0 20vw; 
+  .clava button {
+    min-width: 9vw;
+    height: 45px;
+    padding: 2px;
+    font-size: 14px;
+  }
+
+  .clava button.enter,
+  .clava button.delete {
+    min-width: 18vw;
+  }
+
+  .reset {
+    margin-top: 20px;
   }
 }
