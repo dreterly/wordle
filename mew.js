@@ -111,7 +111,7 @@ function Input(letter) {
       }
       if (rowUser.join("").toLowerCase() === randomWord) {
         setTimeout(function () {
-          alert("You win");
+          alert("You win!");
           currentLetter = 25;
         }, 200);
       }
@@ -119,7 +119,7 @@ function Input(letter) {
       currentRow++;
       if (currentRow == 5 && rowUser.join("").toLowerCase() !== randomWord) {
         setTimeout(function () {
-          alert("You lose");
+          alert("You lose! word is "+ randomWord);
         }, 200);
         let lose = new Audio("sounds/wrong.mp3");
         lose.play();
