@@ -63,6 +63,7 @@ $(document).on("keydown", function (event) {
 });
 
 function Input(letter) {
+  // start: move into separate function - handleLetterDeletion
   if ((letter == "Delete" || letter == "Backspace") && rowUser.length > 0) {
     if (currentLetter > 0) {
       currentLetter--;
@@ -73,6 +74,8 @@ function Input(letter) {
 
     } return;
   }
+  // end: move into separate function - handleLetterDeletion
+  // start: move into separate function - handleWordSubmission
   if (letter === "Enter") {
     if (rowUser.length !== 5) {
       alert("input 5 letters");
@@ -123,20 +126,24 @@ function Input(letter) {
       return;
     }
   }
+  // end: move into separate function - handleWordSubmission
 
-  let ukrainianAlphabet = "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя";
-  if (rowUser.length < 5 && currentLetter < 25 && letter.length === 1) {
-    if (ukrainianAlphabet.includes(letter.toLowerCase())) {
-      let upperLetter = letter.toUpperCase();
-      rowUser.push(upperLetter);
-      $(".item")
-        .eq(currentRow * 5 + currentLetter)
-        .text(upperLetter);
-      let kick = new Audio("sounds/kick-bass.mp3");
-      kick.play();
-      currentLetter++;
-    }
+  // start: move into separate function - ?handleWordEntry? - think about more proper name
+  // 'а'.charCodeAt(0) - 1072
+  // 'я'.charCodeAt(0) - 1103
+  letter = letter.toLowerCase()
+  const isUkrLetter = letter.charCodeAt(0) >= 1072 && letter.charCodeAt(0) <= 1103
+  if (isUkrLetter && rowUser.length < 5 && currentLetter < 25 && letter.length === 1) {
+    let upperLetter = letter.toUpperCase();
+    rowUser.push(upperLetter);
+    $(".item")
+      .eq(currentRow * 5 + currentLetter)
+      .text(upperLetter);
+    let kick = new Audio("sounds/kick-bass.mp3");
+    kick.play();
+    currentLetter++;
   }
+  // end: move into separate function - ?handleWordEntry? - think about more proper name
 }
 function ColorForKey(letter, color) {
   $(".btn").each(function () {
