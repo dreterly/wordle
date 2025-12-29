@@ -86,29 +86,38 @@ font-family: "Ubuntu", sans-serif;
 }
 
 @media (max-width: 600px) {
- 
+  .row { 
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    margin: 5px 0;
+  } 
+
   .item {
-    width: 15vw;      
-    height: 15vw;
-    font-size: 25px;  
+    width: 16vw;      
+    height: 16vw;
+    font-size: 25px; 
     margin: 2px;
   }
 
-
-  .keyboard {
-    width: 100%;       
-    padding: 5px;
+  .clava {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
   }
 
   .btn {
-    min-width: 8vw;  
+    flex: 1 0 8vw; 
     height: 45px;
     font-size: 14px;
     margin: 2px;
+    padding: 5px;
+    border-radius: 4px;
   }
 
- 
   .enter, .delete {
-    min-width: 15vw;
+    flex: 2 0 20vw; 
   }
 }
